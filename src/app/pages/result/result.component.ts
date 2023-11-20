@@ -13,7 +13,7 @@ export class ResultComponent implements OnInit {
   fibonacci: string = StringConst.empty;
   triangular: string = StringConst.empty;
   primo: string = StringConst.empty;
-  resultado : string = StringConst.empty;
+  resultado: string = StringConst.empty;
   constructor(
     private seriesService: SeriesService,
     private route: ActivatedRoute,
@@ -22,12 +22,16 @@ export class ResultComponent implements OnInit {
     this.route.params.subscribe((parameters) => {
       if (parameters['n']) {
         this.number = Number(parameters['n']);
+        if (isNaN(this.number)) {
+          this.router.navigate(['home']);
+        }
+
       }
     });
   }
 
   ngOnInit(): void {
-    this.triangular = String(this.seriesService.triangularSerie(this.number - 1));    
+    this.triangular = String(this.seriesService.triangularSerie(this.number - 1));
     this.fibonacci = String(2 * this.seriesService.fibonacciSerie(this.number + 2));
     this.primo = String(3 * this.seriesService.numPrimos(this.number));
     this.resultado = String(this.seriesService.serieN(this.number).toFixed(3));
@@ -36,5 +40,9 @@ export class ResultComponent implements OnInit {
   goBack() {
     this.router.navigate(['home']);
   }
+
+  goToLink(url: string): void{
+    window.open(url, "_blank");
+}
 
 }

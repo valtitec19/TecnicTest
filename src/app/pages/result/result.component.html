@@ -3,7 +3,7 @@
 
         <div>
             <header>
-                <h1>Resultado Calculadora Serie N = {{number}}</h1>
+                <h1 style="font-weight: bolder;">Resultado Calculadora Serie N = {{number}}</h1>
             </header>
             <div class="content-icon">
 
@@ -21,11 +21,17 @@
                 <span>{{triangular}}</span>
                 <span>{{fibonacci}}</span>
             </div>
-        </div>
-        
-        <div class="results">
             <div class="content-results">
-                <span style="font-size: 24px;">Resultado Serie(n)</span>
+                <a (click)="goToLink('https://es.wikipedia.org/wiki/N%C3%BAmero_triangular')">Saber más...</a>
+                <a (click)="goToLink('https://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci')">Saber más...</a>
+                <a (click)="goToLink('https://es.wikipedia.org/wiki/N%C3%BAmero_primo')">Saber más...</a>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-content: center;
+        justify-content: center; border: 2px solid green; padding-bottom: 25px;">
+            <div class="content-results">
+                <span style="font-size: 24px;">Resultado Serie(n):</span>
             </div>
             <div class="content-results">
                 <span style="font-size: 24px; font-weight: bold;">{{resultado}}</span>

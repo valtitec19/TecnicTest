@@ -23,7 +23,7 @@ describe('ResultComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            params: of({n: '5'})
+            params: of({n: 'gdfgdf'})
           }
         },
       ]
@@ -40,8 +40,22 @@ describe('ResultComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
   it('should call goBack()', () => {
     component.goBack();
     expect(routerSpy.navigate).toHaveBeenCalledWith(['home']);
+  });
+
+  it('should call goToLink()', () => {
+    const previewWindowMock = {
+      document: {
+        write() { },
+        body: {
+          setAttribute() { }
+        }
+      }
+    } as unknown as Window;
+    component.goToLink('');
+    spyOn(window, 'open').and.returnValue(previewWindowMock);
   });
 });
