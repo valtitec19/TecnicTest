@@ -16,14 +16,14 @@
           <label for="number">Introduzca el valor de n</label>
           <input tabindex="1" type="text" formControlName="number" class="form-control" autocomplete="organization"
             maxlength="50" />
-          <span *ngIf="form.controls['number'].errors && form.controls['number'].touched">Solo se admiten número
-            enteros positivos</span>
+          <span *ngIf="form.controls['number'].invalid && form.controls['number'].touched">Debe ingresar un número
+            entero positivo</span>
         </div>
 
         <div class="content-controls">
           <button [ngClass]="{
             'btn-primary': !(form.controls['number'].errors), 
-            'btn-out-line' : (form.controls['number'].errors)}" (click)="click()">Enviar</button>
+            'btn-out-line' : (form.controls['number'].errors)}" (click)="click()">Calcular</button>
         </div>
       </div>
     </div>

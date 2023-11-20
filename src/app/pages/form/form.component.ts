@@ -16,7 +16,7 @@ export class FormComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) {
     this.form = this.formBuilder.group({
-      number: ['', [Validators.required, Validators.min(1), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      number: ['', [Validators.required, Validators.min(1), Validators.pattern("^[0-9]*$")]],
     });
   }
 
@@ -24,6 +24,7 @@ export class FormComponent implements OnInit {
   }
 
   click() {
+    this.form.controls['number'].markAsTouched();
     if (this.form.valid) {
       this.router.navigate(['home/result/' + this.form.controls['number'].value]);
     }
