@@ -1,0 +1,31 @@
+<section class="container">
+  <form [formGroup]="form">
+    <div class="ac-card-from">
+
+      <div>
+        <header>
+          <h1>Calculadora Serie N</h1>
+        </header>
+        <div class="content-icon">
+
+          <img src="../../../assets/form.png" alt="not-found" class="icon-hd">
+        </div>
+      </div>
+      <div class="content-form">
+        <div class="form-group">
+          <label for="number">Introduzca el valor de n</label>
+          <input tabindex="1" type="text" formControlName="number" class="form-control" autocomplete="organization"
+            maxlength="50" />
+          <span *ngIf="form.controls['number'].errors && form.controls['number'].touched">Solo se admiten número
+            enteros positivos</span>
+        </div>
+
+        <div class="content-controls">
+          <button [ngClass]="{
+            'btn-primary': !(form.controls['number'].errors), 
+            'btn-out-line' : (form.controls['number'].errors)}" (click)="click()">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>

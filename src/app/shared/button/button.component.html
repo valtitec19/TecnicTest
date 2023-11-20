@@ -1,0 +1,16 @@
+<button 
+    [disabled]="disable" 
+    mat-icon-button 
+    class="btn" 
+    [ngClass]="{
+        'btn-success': type === true, 
+        'btn-cancel' : type === false,
+        'btn-disabled': disable }" 
+    (click)="handlerClick()">
+    <ng-content *ngIf="!showLoading"></ng-content>
+    <img
+        *ngIf="showLoading"
+        class="loading" 
+        src="../../../../assets/img/spinner-white.svg" 
+        alt="not-found"/>
+</button>
