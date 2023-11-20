@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BooleanConst } from 'src/app/constants/constants';
-import { SeriesService } from 'src/app/services/series.service';
+import { Router } from '@angular/router';
+import { NumberConst } from 'src/app/constants/constants';
 
 @Component({
   selector: 'app-form',
@@ -10,34 +10,23 @@ import { SeriesService } from 'src/app/services/series.service';
 })
 export class FormComponent implements OnInit {
   form: FormGroup = new FormGroup({});
-  errorMsg?: number;
-  type: boolean = BooleanConst.true;
-  loading: boolean = BooleanConst.false;
-  result: boolean = BooleanConst.true;
-  scrrenEnable: boolean = BooleanConst.true;
-  response: string = '';
-  msg: string = '';
-  showDisclaimer: boolean = BooleanConst.false;
-  caracteres: string = 'Caracteres especiales: _,@$!%*¿?&.<>{}()+#~¡´-'
+  n: number = NumberConst.zero;
   constructor(
-    public seriesService: SeriesService,
+    private router: Router,
     private formBuilder: FormBuilder,
   ) {
     this.form = this.formBuilder.group({
-      number: ['',[Validators.required, Validators.min(1), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      number: ['', [Validators.required, Validators.min(1), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
     });
-   }
-
-  ngOnInit(): void {
-    // this.seriesService.triangularSerie(8);
-    // this.seriesService.fibonacciSerie(10);
-    // this.seriesService.numPrimos(5);
-    this.seriesService.serieN(9);
   }
 
-  click(){
-    console.log(this.form.controls['number']);
-    
+  ngOnInit(): void {
+  }
+
+  click() {
+    if (this.form.valid) {
+      this.router.navigate(['home/result/' + this.form.controls['number'].value]);
+    }
   }
 
 }

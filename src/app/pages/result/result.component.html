@@ -3,7 +3,7 @@
 
         <div>
             <header>
-                <h1>Resultado Calculadora Serie N</h1>
+                <h1>Resultado Calculadora Serie N = {{number}}</h1>
             </header>
             <div class="content-icon">
 
@@ -12,14 +12,23 @@
         </div>
         <div class="results">
             <div class="content-results">
-                <span>Número triangular:</span>
-                <span>Sucesión de Fibonacci:</span>
-                <span>Número primo:</span>
+                <span>3 * Número primo(n):</span>
+                <span>Número triangular( n - 1):</span>
+                <span>2 * Sucesión de Fibonacci(n + 2):</span>
             </div>
             <div class="content-results">
+                <span>{{primo}}</span>
                 <span>{{triangular}}</span>
                 <span>{{fibonacci}}</span>
-                <span>{{primo}}</span>
+            </div>
+        </div>
+        
+        <div class="results">
+            <div class="content-results">
+                <span style="font-size: 24px;">Resultado Serie(n)</span>
+            </div>
+            <div class="content-results">
+                <span style="font-size: 24px; font-weight: bold;">{{resultado}}</span>
             </div>
         </div>
         <div class="content-controls">

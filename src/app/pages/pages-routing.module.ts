@@ -5,7 +5,7 @@ import { ResultComponent } from './result/result.component';
 
 const routes: Routes = [
   { path: '', component: FormComponent, }, 
-  { path: 'result', component: ResultComponent, }];
+  { path: 'result/:n', component: ResultComponent, }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
